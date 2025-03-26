@@ -1,0 +1,36 @@
+First Solved: 26/03/2025
+
+class Solution {
+    public int strStr(String haystack, String needle) {
+
+        int index = 0;
+        int i = 0;
+        int j = 0;
+
+
+        // If needle is greater - we don't need to bother solving
+        if (needle.length() > haystack.length()) {
+            return -1;
+        }
+
+        //Iterate through haystack
+        while (index < haystack.length()) {
+            //Check if characters are the same, if they are - continue along i and j
+            while (haystack.charAt(i) == needle.charAt(j)) {
+                //We need to stop the haystack from iterating if j is on the last digit before we auto bin
+                if (j == needle.length()-1) {
+                    return index;
+                } else if (i == haystack.length()-1) {
+                    return -1;
+                }
+                    i++;
+                    j++;
+                } 
+                //Increase the index to look through the next 'i' value    
+                index++;
+                i = index;
+                j = 0;
+            }
+        return -1;
+    }
+}
