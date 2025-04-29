@@ -1,0 +1,42 @@
+class Solution {
+    public boolean isHappy(int n) {
+        Set<Integer> result = new HashSet<>();
+        ArrayList<Integer> comp = new ArrayList<>();
+        int newVal;
+
+
+        if (n == 1) {
+            return true;
+        }
+
+        while (n != 1) {
+            if (result.contains(n)) { //If we've encountered this before, we're in a loop!
+                return false;
+            }
+
+            result.add(n);
+
+            while (n > 0) {
+                newVal = n % 10;
+                comp.add(newVal);
+                n /= 10;
+            }
+
+            newVal = 0;
+
+            for (int i = 0; i < comp.size(); i ++) {
+                newVal = comp.get(i);
+                newVal = (int) Math.pow(newVal, 2);
+                n += newVal;
+                newVal = 0;
+            }
+
+            comp = new ArrayList<>();
+
+            if (n == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
