@@ -1,0 +1,23 @@
+class Solution {
+    public int lengthOfLastWord(String s) {
+        String word = "";
+        Boolean trigger = false;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ' ') {
+                trigger = true;
+                continue;
+            } else {
+                if (trigger == true) {
+                    word = "";
+                    word += s.charAt(i);
+                    trigger = false;
+                } else {
+            word += s.charAt(i);
+                    }
+                }
+            }
+
+            return word.length();
+        }
+    }
